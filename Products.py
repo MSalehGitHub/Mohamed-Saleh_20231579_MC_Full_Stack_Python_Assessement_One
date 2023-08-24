@@ -17,7 +17,7 @@ class Product:
     @classmethod
     def readProductFromDatabase(self ):
        
-
+         
         record =  Product.ProductsDB.iloc[Product.currentRecordIndex]
         Product.currentRecordIndex+=1
         if(len(Product.ProductsDB) ==  Product.currentRecordIndex):
@@ -26,6 +26,14 @@ class Product:
 
         p=Product(_id=record['uniq_id'],_name=record['product_name'],_price=record['price'])
         return p
+    
+    @classmethod
+    def readProductFromDatabase(self,recordIndex ):
+       
+        if(recordIndex>=0 and recordIndex < len(Product.ProductsDB)):
+            record =  Product.ProductsDB.iloc[recordIndex] 
+            p=Product(_id=record['uniq_id'],_name=record['product_name'],_price=record['price'])
+            return p
     
 
 
