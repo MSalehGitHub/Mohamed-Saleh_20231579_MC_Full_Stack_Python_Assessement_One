@@ -1,5 +1,6 @@
 import pandas as pd
-
+from decimal import Decimal
+from re import sub
 
 class Product:
 
@@ -24,11 +25,11 @@ class Product:
             Product.currentRecordIndex=0
          
 
-        p=Product(_id=record['uniq_id'],_name=record['product_name'],_price=record['price'])
+        p=Product(_id=record['uniq_id'],_name=record['product_name'],_price=Decimal(sub(r'[^\d.]', '',record['price'])) )
         return p
     
     @classmethod
-    def readProductFromDatabase(self,recordIndex ):
+    def readProductFromDatabaseByIndex(self,recordIndex ):
        
         if(recordIndex>=0 and recordIndex < len(Product.ProductsDB)):
             record =  Product.ProductsDB.iloc[recordIndex] 
@@ -36,11 +37,4 @@ class Product:
             return p
     
 
-
-
-
-while (True):
-    x= Product.readProductFromDatabase()
-    print(f'[{Product.currentRecordIndex}] {x.id} , {x.name} , {x.price}')
-    
 
