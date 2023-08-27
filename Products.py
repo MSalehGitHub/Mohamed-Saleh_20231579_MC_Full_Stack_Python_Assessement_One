@@ -1,6 +1,7 @@
 import pandas as pd
 from decimal import Decimal
 from re import sub
+import math
 
 class Product:
 
@@ -23,9 +24,20 @@ class Product:
         Product.currentRecordIndex+=1
         if(len(Product.ProductsDB) ==  Product.currentRecordIndex):
             Product.currentRecordIndex=0
-         
+        
+        recId = record['uniq_id']
+        recName = record['product_name']
+        recPrice = 0.0
+        try:
+          recPrice =   float(record['price'])
+        except ValueError:
+            recPrice = float(sub(r'[^\d.]+','',record['price']))
 
-        p=Product(_id=record['uniq_id'],_name=record['product_name'],_price=Decimal(sub(r'[^\d.]', '',record['price'])) )
+        if( math.isnan(recPrice)):
+            recPrice = 0
+
+
+        p=Product(_id=recId,_name=recName,_price=recPrice )
         return p
     
     @classmethod

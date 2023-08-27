@@ -20,7 +20,10 @@ class BlackfridayPlugin:
             
             totalAmount = totalAmount + p.price
         pass
+        
        # print(f"Total => {totalAmount}")
+        return totalAmount
+#################################
 
 
     def applyPromotion(self,productsList):
@@ -30,19 +33,21 @@ class BlackfridayPlugin:
         if( self.promotionCriteria(NumItem=numItems,TotalAmount=shoppingCartTotal)  ):
             newPriceAfterDiscount = shoppingCartTotal - self.DiscountAmount
             
-            return (f"Congratulations Promotion applied  ",numItems,shoppingCartTotal,newPriceAfterDiscount)
+            return (True,f"Congratulations Promotion applied  ",numItems,round((shoppingCartTotal*100)/100,2),round((newPriceAfterDiscount*100)/100,2))
         else:
             newPriceAfterDiscount = shoppingCartTotal
              
-            return (f"Sorry Try Later  ",numItems,shoppingCartTotal,newPriceAfterDiscount)
+            return (True,f"Sorry Try Later  ",numItems,round((shoppingCartTotal*100)/100,2),round((newPriceAfterDiscount*100)/100,2))
 
 ######################################################################
 
 product=[Products.Product.readProductFromDatabase(),
          Products.Product.readProductFromDatabase(),
          Products.Product.readProductFromDatabase(),
+        
+         Products.Product.readProductFromDatabase(),
          Products.Product.readProductFromDatabase()         
          ]
 blackFr=BlackfridayPlugin()
 
-blackFr.calculateShoppingCartTotalAmount(product)
+print(blackFr.applyPromotion(product))

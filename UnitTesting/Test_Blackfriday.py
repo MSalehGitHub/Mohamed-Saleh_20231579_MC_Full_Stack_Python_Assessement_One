@@ -1,0 +1,3 @@
+import pytest
+import BlackfridayPlugin
+import Products
