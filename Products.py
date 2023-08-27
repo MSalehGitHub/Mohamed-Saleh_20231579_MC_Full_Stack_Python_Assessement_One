@@ -44,8 +44,21 @@ class Product:
     def readProductFromDatabaseByIndex(self,recordIndex ):
        
         if(recordIndex>=0 and recordIndex < len(Product.ProductsDB)):
-            record =  Product.ProductsDB.iloc[recordIndex] 
-            p=Product(_id=record['uniq_id'],_name=record['product_name'],_price=record['price'])
+            record =  Product.ProductsDB.iloc[recordIndex]        
+            
+            recId = record['uniq_id']
+            recName = record['product_name']
+            recPrice = 0.0
+            try:
+                 recPrice =   float(record['price'])
+            except ValueError:
+                recPrice = float(sub(r'[^\d.]+','',record['price']))
+
+            if( math.isnan(recPrice)):
+                recPrice = 0
+
+
+            p=Product(_id=recId,_name=recName,_price=recPrice )
             return p
     
 

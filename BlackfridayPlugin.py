@@ -37,17 +37,30 @@ class BlackfridayPlugin:
         else:
             newPriceAfterDiscount = shoppingCartTotal
              
-            return (True,f"Sorry Try Later  ",numItems,round((shoppingCartTotal*100)/100,2),round((newPriceAfterDiscount*100)/100,2))
+            return (False,f"Sorry Try Later  ",numItems,round((shoppingCartTotal*100)/100,2),round((newPriceAfterDiscount*100)/100,2))
 
 ######################################################################
 
-product=[Products.Product.readProductFromDatabase(),
-         Products.Product.readProductFromDatabase(),
-         Products.Product.readProductFromDatabase(),
+# product=[Products.Product.readProductFromDatabase(),
+#          Products.Product.readProductFromDatabase(),
+#          Products.Product.readProductFromDatabase(),
         
-         Products.Product.readProductFromDatabase(),
-         Products.Product.readProductFromDatabase()         
+#          Products.Product.readProductFromDatabase(),
+#          Products.Product.readProductFromDatabase()         
+#          ]
+
+
+product=[Products.Product.readProductFromDatabaseByIndex(1),
+         Products.Product.readProductFromDatabaseByIndex(2),
+         Products.Product.readProductFromDatabaseByIndex(3),
+         Products.Product.readProductFromDatabaseByIndex(4),
+         Products.Product.readProductFromDatabaseByIndex(5),
+         Products.Product.readProductFromDatabaseByIndex(6),
+         Products.Product.readProductFromDatabaseByIndex(7)        
+         
          ]
+
+
 blackFr=BlackfridayPlugin()
 
 print(blackFr.applyPromotion(product))
