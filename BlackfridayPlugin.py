@@ -5,6 +5,10 @@ class BlackfridayPlugin:
     DiscountAmount = 50
     DiscountPercentage = 0.2
 
+
+    def __init__(self) -> None:
+        pass
+
     #dynamic function thats accept promotion related params and check if it applies and return the value
     #our criteria in this assignement is (NumberOfItems>=5 and TotalAmount>=USD200)
     def promotionCriteria(self,**kwargs):
@@ -50,16 +54,22 @@ class BlackfridayPlugin:
 #          ]
 
 
-product=[Products.Product.readProductFromDatabaseByIndex(1),
-         Products.Product.readProductFromDatabaseByIndex(2),
-         Products.Product.readProductFromDatabaseByIndex(3),
-         Products.Product.readProductFromDatabaseByIndex(4),
-         Products.Product.readProductFromDatabaseByIndex(5),
-         Products.Product.readProductFromDatabaseByIndex(6),
-         Products.Product.readProductFromDatabaseByIndex(7)        
+# product=[Products.Product.readProductFromDatabaseByIndex(10),
+#          Products.Product.readProductFromDatabaseByIndex(20),
+#          Products.Product.readProductFromDatabaseByIndex(30),
+#          Products.Product.readProductFromDatabaseByIndex(40)        
+         
+#          ]
+
+
+
+product=[Products.Product.readProductFromDatabaseByIndex(100),
+         Products.Product.readProductFromDatabaseByIndex(200),
+         Products.Product.readProductFromDatabaseByIndex(300),
+         Products.Product.readProductFromDatabaseByIndex(400),        
+         Products.Product.readProductFromDatabaseByIndex(500)        
          
          ]
-
 
 blackFr=BlackfridayPlugin()
 
