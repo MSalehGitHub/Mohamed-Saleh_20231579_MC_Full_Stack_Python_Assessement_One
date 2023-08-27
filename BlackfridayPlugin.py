@@ -71,11 +71,11 @@ class BlackfridayPlugin:
 #          Products.Product.readProductFromDatabaseByIndex(500)        
          
 #          ]
+
 blackFr=BlackfridayPlugin()
 products = []
 
-for pIndex in range(1,random.randint(1,20)):
+for pIndex in range(1,random.randint(1,20)):# gnerate random numbers of products list or shopping kart basket
     products.append(Products.Product.readProductFromDatabaseByIndex(random.randint(1,1000)))
-
 
 print(blackFr.applyPromotion(products))
