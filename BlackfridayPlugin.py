@@ -1,4 +1,5 @@
 import Products
+import random
 
 class BlackfridayPlugin:
 
@@ -63,14 +64,18 @@ class BlackfridayPlugin:
 
 
 
-product=[Products.Product.readProductFromDatabaseByIndex(100),
-         Products.Product.readProductFromDatabaseByIndex(200),
-         Products.Product.readProductFromDatabaseByIndex(300),
-         Products.Product.readProductFromDatabaseByIndex(400),        
-         Products.Product.readProductFromDatabaseByIndex(500)        
+# product=[Products.Product.readProductFromDatabaseByIndex(100),
+#          Products.Product.readProductFromDatabaseByIndex(200),
+#          Products.Product.readProductFromDatabaseByIndex(300),
+#          Products.Product.readProductFromDatabaseByIndex(400),        
+#          Products.Product.readProductFromDatabaseByIndex(500)        
          
-         ]
-
+#          ]
 blackFr=BlackfridayPlugin()
+products = []
 
-print(blackFr.applyPromotion(product))
+for pIndex in range(1,random.randint(1,20)):
+    products.append(Products.Product.readProductFromDatabaseByIndex(random.randint(1,1000)))
+
+
+print(blackFr.applyPromotion(products))
